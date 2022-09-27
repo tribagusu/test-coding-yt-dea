@@ -1,4 +1,6 @@
 import "./App.css"
+import React from "react"
+import Select from "react-select"
 import axios from "axios"
 import { useEffect, useState } from "react"
 
@@ -12,19 +14,12 @@ function App() {
       .catch((err) => err.message)
   }, [])
 
-  const users = (data) => {
-    return data
-  }
+  const options = data.map((data) => data.name)
 
   return (
     <div className="App">
       <h1>POKEMON WORLD</h1>
-      <input type="text" style={{ height: "30px" }} />
-      {users(data)
-        .sort()
-        .map((item) => (
-          <p>{item.name}</p>
-        ))}
+      <Select options={options} />
     </div>
   )
 }
